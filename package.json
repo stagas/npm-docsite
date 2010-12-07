@@ -1,0 +1,11 @@
+{ "name" : "npm-docsite"
+, "version" : "0.0.0"
+, "author" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)"
+, "description" : "A website that serves the docs of npm packages."
+, "scripts" : { "start" : "node server.js" }
+, "dependencies" : { "npm" : "~0.2.11 || 0.3"
+                   , "markdown-js" : "*"
+                   }
+, "engines" : { "node" : "0.3.x" }
+, "config" : { "port" : "8008" }
+}
