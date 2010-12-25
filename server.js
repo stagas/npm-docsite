@@ -1,5 +1,5 @@
 var npm = require("npm")
-  , server = require("./http-server")
+  , server = require("./express-app")
 
 npm.load({}, function (er) {
   if (er) throw er

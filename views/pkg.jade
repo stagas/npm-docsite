@@ -1,0 +1,10 @@
+h1= title
+ul#doclist
+  - for (var i in docs)
+    li
+      a(href='/' + name + '/' + version + '/' +
+             (docpath ? docpath + '/' : '') + i)= i
+
+- if (readme)
+  div#README
+    != markdown.parse(readme)
