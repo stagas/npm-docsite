@@ -9,6 +9,7 @@
 , "dependencies" : { "npm" : "~0.2.11 || 0.3"
                    , "markdown-js" : "*"
                    , "express" : "1"
+                   , "jade" : "~0.6"
                    }
 , "engines" : { "node" : "~0.2.5 || 0.3.x" }
 , "config" : { "port" : "8008" }
