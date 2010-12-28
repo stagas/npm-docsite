@@ -1,11 +1,15 @@
 { "name" : "npm-docsite"
-, "version" : "0.0.0"
-, "author" : "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)"
+, "version" : "0.0.1"
+, "contributors" :
+    [ "Evan Meagher <evan.meagher@gmail.com> (http://evanmeagher.net/)"
+    , "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me/)"
+    ]
 , "description" : "A website that serves the docs of npm packages."
 , "scripts" : { "start" : "node server.js" }
 , "dependencies" : { "npm" : "~0.2.11 || 0.3"
                    , "markdown-js" : "*"
+                   , "express" : "1"
                    }
-, "engines" : { "node" : "0.3.x" }
+, "engines" : { "node" : "~0.2.5 || 0.3.x" }
 , "config" : { "port" : "8008" }
 }
