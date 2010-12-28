@@ -1,7 +1,7 @@
 var getDocs = require('./util/get-docs')
   , registry = require('npm/utils/registry')
   , express = require('express')
-  , markdown = require('markdown')
+  , markdown = require('markdown-js')
   , pkgcache = {}
 
 module.exports = app = express.createServer()
