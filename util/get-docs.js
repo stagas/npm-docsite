@@ -63,8 +63,9 @@ function dirToJson (dir, cb) {
           })
         } else {
           // Only include markdown files.
-          if (['.md', '.mmd', '.markdown'].indexOf(path.extname(file))
-              !== -1) {
+          if (['.md', '.mkd', '.mmd', '.markdown'].indexOf(path.extname(file))
+              !== -1
+              && file.charAt(0) !== '.') {
             fs.readFile(dir + '/' + file, 'utf8', function (er, data) {
               if (er) return cb(er)
               obj[basename] = data
