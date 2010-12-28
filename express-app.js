@@ -10,6 +10,10 @@ app.configure(function () {
   app.set('view engine', 'jade')
 })
 
+app.get('/favicon.ico', function (req, res) {
+  res.redirect('http://npmjs.org/favicon.ico', 301)
+})
+
 // 404 page.
 app.get('/404', function (req, res) {
   res.render('404', {
@@ -22,7 +26,7 @@ app.get('/404', function (req, res) {
 // Application root/index.
 app.get('/', function (req, res) {
   registry.get('/', null, Infinity, false, function (er, data) {
-    if (er) return error(er)
+    if (er) return error(er, res)
     res.render('index', {
       locals: {
         title: 'npmdoc'
@@ -38,13 +42,13 @@ app.get(/^\/([^\/]+)(?:\/([^\/]+))?\/?$/, function (req, res) {
     , version = req.params[1]
 
   registry.get(name, undefined, Infinity, false, function (er, data) {
-    if (er) return error(er)
+    if (er) return error(er, res)
     // If no version specified, get the latest.
     if (!version) {
       version = data['dist-tags'].latest
     }
     getDocs(name, version, function (er, data) {
-      if (er) return error(er)
+      if (er) return error(er, res)
       // TODO: Output a list of other versions of the pkg.
       res.render('pkg', {
         locals: {
@@ -70,7 +74,7 @@ app.get(/^\/([^\/]+)(?:\/([^\/]+))\/((?:.+)*)$/, function (req, res) {
   })
 
   getDocs(name, version, function (er, data) {
-    if (er) return error(er)
+    if (er) return error(er, res)
     var target = data.docs
     // Determine if URL doc path is valid.
     var valid_path = (function () {
@@ -113,7 +117,7 @@ app.get(/^\/([^\/]+)(?:\/([^\/]+))\/((?:.+)*)$/, function (req, res) {
 app.get('*', function (req, res) { res.redirect('404', 404) })
 
 
-function error(er) {
+function error (er, res) {
   console.error(er.stack)
   res.redirect('/404')
 }
